@@ -58,7 +58,8 @@ export RYGEL_DISABLE_UPNP=true
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
-# export LANG=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Preferred text editor
 export EDITOR='vim'
