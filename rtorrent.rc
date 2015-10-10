@@ -1,0 +1,27 @@
+session.path.set = /mnt/data/torrents/.session
+# Watch dir /home/srazmetov/Downloads/ for new torrents, and download all new torrents to /mnt/data/torrents/.data
+schedule = downloads_folder, 5, 5, ((load.start,  /home/srazmetov/Downloads/*.torrent,   "d.custom.set = watchdir, /mnt/data/torrents/.data",   "d.directory.set = $d.custom=watchdir"))
+
+# Create symlinks to real data with [INCOMPLETE] tag if download is incomplete, 
+# further more downloads is tied to that links, if link is deleted data and download are removed
+method.insert = d.renamed_postfix,  simple, "if = $d.complete=,, [INCOMPLETE]"
+method.insert = d.link_name,        simple, "cat = /mnt/data/torrents/, $d.name=, $d.renamed_postfix="
+method.insert = d.do_create_link,   simple, "execute = ln, -s, $d.get_base_path=, $d.link_name=; execute = rm, -f, $d.tied_to_file=; d.tied_to_file.set = $d.link_name=; d.save_full_session="
+method.insert = d.rename_link,      simple, "execute = mv, $d.tied_to_file=, $d.link_name=; d.tied_to_file.set = $d.link_name=; d.save_full_session="
+method.insert = d.safe_create_link, simple, "branch = ((equal, d.tied_to_file=, d.link_name=)), , d.do_create_link="
+
+method.set_key = event.download.inserted_new,   rename_loaded,   d.safe_create_link=
+method.set_key = event.download.resumed,        rename_resumed,  d.safe_create_link=
+method.set_key = event.download.finished,       rename_finished, d.rename_link=
+# Remove files along with download
+method.set_key = event.download.erased, rm_files, "execute = rm, -rf, $d.get_base_path="
+
+# Watch a directory for torrents, and remove those that have been deleted.
+schedule = watch_untied,      5, 5, ((remove_untied))
+
+# Set default view to incomplete torrents sorted by date
+schedule = default_view, 1, 0, ui.current_view.set=incomplete
+method.set_key = event.download.inserted_new,   loaded_time,  "d.custom.set = tm_loaded, $system.time=; d.save_full_session="
+view.sort_new       = incomplete, less=d.custom=tm_loaded
+view.sort_current   = incomplete, less=d.custom=tm_loaded
+
