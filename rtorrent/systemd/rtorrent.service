@@ -1,0 +1,17 @@
+[Unit]
+Description=rTorrent
+Requires=network.target local-fs.target
+
+[Service]
+#Type=oneshot
+#RemainAfterExit=yes
+Type=forking
+PIDFile=/mnt/data/torrents/.session/rtorrent.pid
+KillMode=none
+User=srazmetov
+ExecStart=/home/srazmetov/bin/start_rtorrent.sh
+ExecStop=/home/srazmetov/bin/stop_rtorrent.sh
+
+[Install]
+WantedBy=multi-user.target
+
