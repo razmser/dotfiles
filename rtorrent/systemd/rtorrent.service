@@ -1,10 +1,9 @@
 [Unit]
 Description=rTorrent
-Requires=network.target local-fs.target
+Requires=network.target local-fs.target mnt-data.mount
+After=mnt-data.mount
 
 [Service]
-#Type=oneshot
-#RemainAfterExit=yes
 Type=forking
 PIDFile=/mnt/data/torrents/.session/rtorrent.pid
 KillMode=none
