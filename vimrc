@@ -54,3 +54,6 @@ syntax enable
 set background=dark
 colorscheme solarized
 
+" Nerd tree config
+map <C-n> :NERDTreeToggle<CR>
+
