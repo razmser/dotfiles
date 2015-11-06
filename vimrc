@@ -45,15 +45,28 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
+syntax enable
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set t_Co=256
+set encoding=utf-8
 
 " Solarized dark color scheme
-syntax enable
 set background=dark
 colorscheme solarized
 
 " Nerd tree config
 map <C-n> :NERDTreeToggle<CR>
+
+" Remove trailing whitespaces on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" Powerline
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+set laststatus=2 " Always display the statusline in all windows
+set showtabline=2 " Always display the tabline, even if there is only one tab
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 

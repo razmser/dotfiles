@@ -30,3 +30,6 @@ sudo cp $(pwd)/rtorrent/systemd/rtorrent.service /etc/systemd/system/
 sudo cp $(pwd)/rtorrent/systemd/mnt-data.mount /etc/systemd/system/
 sudo systemctl enable rtorrent.service
 
+# Powerline(for tmux and vim)
+pip install --user powerline-status
+

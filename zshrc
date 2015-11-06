@@ -49,7 +49,8 @@ plugins=(git extract vi-mode debian)
 
 # User configuration
 
-export PATH="/usr/lib/colorgcc/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/srazmetov/bin:/opt/CommonAPI-generator-2.1-2.1.6-commonapi_generator-linux.gtk.x86"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/srazmetov/bin"
+export PATH="/usr/lib/colorgcc/bin:$PATH"
 export CCACHE_PATH="/usr/bin"
 export CGCC_FORCE_COLOR=true
 export RYGEL_DISABLE_UPNP=true
@@ -70,12 +71,6 @@ export EDITOR='vim'
 # ssh
 # export SSH_KEY_PATH="~/.ssh/dsa_id"
 
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# Force tmux always assume that terminal have 256 colors (needed for powerline to work correctly)
+alias tmux="tmux -2"
 
