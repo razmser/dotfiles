@@ -37,3 +37,7 @@ sudo pip install powerline-status
 mkdir -p ~/.fonts
 cp $(pwd)/fonts/* ~/.fonts
 
+# Midnight commander solarized skin
+mkdir -p ~/.local/share/mc/skins
+ln -s $(pwd)/solarized.ini ~/.local/share/mc/skins/solarized.ini
+

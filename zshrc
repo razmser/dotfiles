@@ -66,6 +66,9 @@ export LC_ALL=en_US.UTF-8
 # Preferred text editor
 export EDITOR='vim'
 
+# Use Midnight commander solarized skin
+export MC_SKIN=solarized
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
