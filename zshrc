@@ -51,6 +51,7 @@ plugins=(git extract vi-mode debian)
 
 export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/srazmetov/bin"
 export PATH="/usr/lib/colorgcc/bin:$PATH"
+export PATH="/usr/lib/llvm-3.6/bin:$PATH"
 export CCACHE_PATH="/usr/bin"
 export CGCC_FORCE_COLOR=true
 export RYGEL_DISABLE_UPNP=true
