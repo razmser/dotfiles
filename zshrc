@@ -45,17 +45,17 @@ DISABLE_UNTRACKED_FILES_DIRTY="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git extract vi-mode debian)
+plugins=(git extract debian)
 
 # User configuration
 
-export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/home/srazmetov/bin"
-export PATH="/usr/lib/colorgcc/bin:$PATH"
-export PATH="/usr/lib/llvm-3.6/bin:$PATH"
+export PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games"
+export PATH="/usr/lib/ccache:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/bin:$PATH"
 export CCACHE_PATH="/usr/bin"
 export CGCC_FORCE_COLOR=true
 export RYGEL_DISABLE_UPNP=true
-# export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,4 +77,8 @@ export MC_SKIN=solarized
 
 # Force tmux always assume that terminal have 256 colors (needed for powerline to work correctly)
 alias tmux="tmux -2"
+alias ack="ack-grep"
+
+# Use /opt/qt5.5.1 as my primary qt version
+source /opt/qt5.5.1/bin/env.sh
 

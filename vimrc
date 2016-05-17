@@ -30,6 +30,7 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'lyuts/vim-rtags'
+Plugin 'peterhoeg/vim-qml'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -63,7 +64,11 @@ map <C-n> :NERDTreeToggle<CR>
 " Remove trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Auto refresh unchanged files
+set autoread
+
 " Powerline
+let $PYTHONPATH="/home/srazmetov/.local/lib/python3.4/site-packages"
 python from powerline.vim import setup as powerline_setup
 python powerline_setup()
 python del powerline_setup
