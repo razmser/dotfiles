@@ -1,11 +1,15 @@
 # Path to your oh-my-zsh installation.
-export ZSH=${HOME}/.dotfiles/oh-my-zsh
+export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="sunrise"
+
+# Base16 Shell colors
+BASE16_SHELL="$HOME/.config/base16-shell/base16-default.dark.sh"
+[[ -s $BASE16_SHELL ]] && source $BASE16_SHELL
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -31,7 +35,7 @@ ZSH_THEME="sunrise"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
-DISABLE_UNTRACKED_FILES_DIRTY="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -80,5 +84,5 @@ alias tmux="tmux -2"
 alias ack="ack-grep"
 
 # Use /opt/qt5.5.1 as my primary qt version
-source /opt/qt5.5.1/bin/env.sh
+#source /opt/qt5.5.1/bin/env.sh
 

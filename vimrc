@@ -26,11 +26,14 @@ Plugin 'gmarik/Vundle.vim'
 " Avoid a name conflict with L9
 "Plugin 'user/L9', {'name': 'newL9'}
 
+Plugin 'chriskempson/base16-vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'tpope/vim-fugitive'
 Plugin 'scrooloose/nerdtree'
 Plugin 'lyuts/vim-rtags'
 Plugin 'peterhoeg/vim-qml'
+Plugin 'bling/vim-airline'
+Bundle 'edkolev/tmuxline.vim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -54,25 +57,21 @@ set expandtab
 set t_Co=256
 set encoding=utf-8
 
-" Solarized dark color scheme
+" base16 color scheme
 set background=dark
-colorscheme solarized
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-default
 
-" Nerd tree config
+" Nerd tree hotkey
 map <C-n> :NERDTreeToggle<CR>
 
 " Remove trailing whitespaces on save
 autocmd BufWritePre * :%s/\s\+$//e
 
-" Auto refresh unchanged files
+" Auto refresh changed files
 set autoread
 
-" Powerline
-let $PYTHONPATH="/home/srazmetov/.local/lib/python3.4/site-packages"
-python from powerline.vim import setup as powerline_setup
-python powerline_setup()
-python del powerline_setup
-set laststatus=2 " Always display the statusline in all windows
-set showtabline=2 " Always display the tabline, even if there is only one tab
-set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+" Airline config
+let g:airline_powerline_fonts = 1
+" set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
 
