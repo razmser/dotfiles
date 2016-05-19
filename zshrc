@@ -81,7 +81,7 @@ export MC_SKIN=solarized
 
 # Force tmux always assume that terminal have 256 colors (needed for powerline to work correctly)
 alias tmux="tmux -2"
-alias ack="ack-grep"
+alias ack="/usr/bin/ag"
 
 # Use /opt/qt5.5.1 as my primary qt version
 #source /opt/qt5.5.1/bin/env.sh

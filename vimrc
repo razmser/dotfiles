@@ -34,6 +34,10 @@ Plugin 'lyuts/vim-rtags'
 Plugin 'peterhoeg/vim-qml'
 Plugin 'bling/vim-airline'
 Bundle 'edkolev/tmuxline.vim'
+Plugin 'mileszs/ack.vim'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'godlygeek/tabular'
+Plugin 'raimondi/delimitmate'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -74,4 +78,9 @@ set autoread
 " Airline config
 let g:airline_powerline_fonts = 1
 " set guifont=Ubuntu\ Mono\ derivative\ Powerline\ 11
+
+" Ack plugin(Silver Searcher)
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
 
