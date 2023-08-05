@@ -18,5 +18,5 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 
 -- set colorscheme after plugins installed and themes are avaliable
-vim.cmd[[colorscheme sonokai]]
+vim.cmd[[colorscheme everforest]]
 
