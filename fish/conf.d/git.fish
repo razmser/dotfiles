@@ -6,4 +6,5 @@ abbr --add gr git rebase
 abbr --add ga git add
 abbr --add grm git rm
 abbr --add gd git diff
+abbr --add gdc git diff --cached
 abbr --add gc git commit
