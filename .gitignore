@@ -7,7 +7,6 @@
 # Icon must end with two \r
 Icon
 
-
 # Thumbnails
 ._*
 
@@ -33,3 +32,10 @@ Temporary Items
 
 # NeoVim lazy-lock 
 nvim/lazy-lock.json
+
+# Ignored configs
+htop
+jgit
+k9s
+# gh/hosts.yml contains token
+gh
