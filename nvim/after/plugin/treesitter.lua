@@ -1,4 +1,7 @@
-require'nvim-treesitter.configs'.setup {
+-- For some reason curl installation doesn't work on my ubuntu laptop
+require 'nvim-treesitter.install'.prefer_git = true
+
+require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the five listed parsers should always be installed)
   ensure_installed = { "c", "cpp", "java", "rust", "javascript", "typescript", "go", "lua", "vim", "vimdoc", "query" },
 
