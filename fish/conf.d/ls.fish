@@ -1,5 +1,5 @@
 if not which lsd > /dev/null
-    return
+    exit
 end
 
 abbr --add ls lsd -h
