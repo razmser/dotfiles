@@ -3,6 +3,7 @@ local config = wezterm.config_builder()
 local act = wezterm.action
 
 config.color_scheme = 'Catppuccin Frappe'
+config.hide_tab_bar_if_only_one_tab = true
 
 -- https://wezfurlong.org/wezterm/config/lua/wezterm/target_triple.html
 local is_darwin = function()
