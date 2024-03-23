@@ -2,14 +2,19 @@ local wezterm = require 'wezterm'
 local config = wezterm.config_builder()
 local act = wezterm.action
 
-config.color_scheme = 'Catppuccin Frappe'
-config.hide_tab_bar_if_only_one_tab = true
-config.font = wezterm.font 'HackNerdFont Mono'
-
 -- https://wezfurlong.org/wezterm/config/lua/wezterm/target_triple.html
 local is_darwin = function()
 	return wezterm.target_triple:find("darwin") ~= nil
 end
+
+config.color_scheme = 'Catppuccin Frappe'
+config.hide_tab_bar_if_only_one_tab = true
+if is_darwin() then
+  config.font = wezterm.font 'Hack Nerd Font Mono'
+else
+  config.font = wezterm.font 'HackNerdFont Mono'
+end
+
 
 -- Mac OS has Super + C/P for Copy/Paste so we don't need this hacks
 if not is_darwin() then
