@@ -26,6 +26,8 @@ vim.opt.updatetime = 50
 
 vim.opt.scrolloff = 8
 
+-- sometimes I get files in cp1251 and want them to open properly
+vim.opt.fileencodings = "ucs-bom,utf-8,cp1251,default,latin1"
 
 -- set <space> as the leader key
 vim.g.mapleader = ' '
