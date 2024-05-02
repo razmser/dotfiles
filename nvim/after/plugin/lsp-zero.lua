@@ -26,13 +26,14 @@ require('mason-lspconfig').setup({
 
 -- gopls config provided by go.nvim
 require('go').setup{
-  lsp_cfg = false,
+  lsp_cfg = true,
+  lsp_on_attach = on_attach,
   diagnostic = {
     underline = false,
   }
 }
-local cfg = require('go.lsp').config()
-cfg['on_attach'] = on_attach
+
+local cfg = require'go.lsp'.config()
 require('lspconfig').gopls.setup(cfg)
 
 lsp.setup()
