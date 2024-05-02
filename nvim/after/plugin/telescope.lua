@@ -1,4 +1,21 @@
-require('telescope').setup()
+require('telescope').setup({
+  pickers = {
+    buffers = {
+      show_all_buffers = true,
+      sort_lastused = true,
+      -- theme = "dropdown",
+      -- previewer = false,
+      mappings = {
+        i = {
+          ["<c-d>"] = "delete_buffer",
+        },
+        n = {
+          ["d"] = "delete_buffer",
+        }
+      }
+    }
+  }
+})
 -- To get fzf loaded and working with telescope, you need to call
 -- load_extension, somewhere after setup function:
 require('telescope').load_extension('fzf')
