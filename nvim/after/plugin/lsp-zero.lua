@@ -34,6 +34,18 @@ require('go').setup{
 }
 
 local cfg = require'go.lsp'.config()
+local override = {
+  settings = {
+    gopls = {
+      analyses = {
+        fieldalignment = false,
+        shadow = false
+      }
+    }
+  }
+}
+cfg = vim.tbl_deep_extend('force', cfg, override)
+
 require('lspconfig').gopls.setup(cfg)
 
 lsp.setup()
