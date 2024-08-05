@@ -1,4 +1,4 @@
-if not which exa > /dev/null
+if not which eza > /dev/null
     function ll
         ls -l $argv
     end
@@ -10,13 +10,13 @@ if not which exa > /dev/null
 end
 
 function ls
-    exa --icons $argv
+    eza --icons $argv
 end
 
 function ll
-    exa --long --icons --git $argv
+    eza --long --icons --git $argv
 end
 
 function la
-    exa --all --long --icons --git $argv
+    eza --all --long --icons --git $argv
 end
