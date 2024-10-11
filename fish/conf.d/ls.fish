@@ -14,9 +14,9 @@ function ls
 end
 
 function ll
-    eza --long --icons --git $argv
+    eza --long --icons $argv
 end
 
 function la
-    eza --all --long --icons --git $argv
+    eza --all --long --icons $argv
 end
