@@ -20,6 +20,15 @@ end
 -- init table
 config.keys = {}
 
+-- padding annoys me becase colour is often different from app
+config.enable_scroll_bar = false
+config.window_padding = {
+  left = 6, -- to center in fullscreen on my mac
+  right = 0,
+  top = 0,
+  bottom = 0,
+}
+
 
 -- Mac OS has Super + C/P for Copy/Paste so we don't need this hacks
 if not is_darwin() then
@@ -64,6 +73,7 @@ if is_linux() then
   -- https://github.com/wez/wezterm/issues/4665
   config.enable_wayland = false
 end
+config.native_macos_fullscreen_mode = true
 
 
 return config
