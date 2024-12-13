@@ -130,6 +130,6 @@ function dorv
         case "all"
             docker volume ls --format json | jq .Name | xargs -n1 docker volume rm
         case '*'
-            docker volume ls --format json | jq "select(.Name | test(\"$argv[1]\"))" | xargs -n1 docker volume rm
+            docker volume ls --format json | jq "select(.Name | test(\"$argv[1]\")) | .Name" | xargs -n1 docker volume rm
     end
 end
