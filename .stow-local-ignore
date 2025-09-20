@@ -1,0 +1,7 @@
+justfile
+LICENSE
+README.md
+
+.git
+.gitignore
+.gitmodules
