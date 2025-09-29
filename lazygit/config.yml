@@ -1,0 +1,5 @@
+# For some of my projects I use Secretive that require TouchID
+# for each interaction with ssh key constaunt updates are driving me mad
+git:
+  autoFetch: false
+  autoRefresh: false
