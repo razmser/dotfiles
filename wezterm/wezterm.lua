@@ -10,13 +10,13 @@ local is_linux = function()
 	return wezterm.target_triple:find("linux") ~= nil
 end
 
-config.color_scheme = 'Catppuccin Frappe'
+config.color_scheme = 'Catppuccin Macchiato'
 config.hide_tab_bar_if_only_one_tab = true
-if is_darwin() then
-  config.font = wezterm.font 'Hack Nerd Font Mono'
-else
-  config.font = wezterm.font 'HackNerdFont Mono'
-end
+-- if is_darwin() then
+--   config.font = wezterm.font 'Hack Nerd Font Mono'
+-- else
+--   config.font = wezterm.font 'HackNerdFont Mono'
+-- end
 -- init table
 config.keys = {}
 
