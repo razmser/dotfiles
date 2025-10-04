@@ -29,12 +29,16 @@ config.window_padding = {
   bottom = 0,
 }
 
+-- Helper to append new keys easily
+local function add_key(key)
+  table.insert(config.keys, key)
+end
 
 -- Mac OS has Super + C/P for Copy/Paste so we don't need this hacks
 if not is_darwin() then
   -- Ctrl + C works as copy when something is selected, otherwise it's interrupt
   -- based on https://github.com/wez/wezterm/discussions/2426#discussioncomment-4197449
-  table.insert(config.keys, {
+  add_key({
     key = 'c',
     mods = 'CTRL',
     action = wezterm.action_callback(function(window, pane)
@@ -47,24 +51,24 @@ if not is_darwin() then
       end
     end),
   })
-  table.insert(config.keys,
+  add_key(
     { key = 'v', mods = 'CTRL', action = wezterm.action.PasteFrom 'Clipboard' }
   )
-  table.insert(config.keys,
-    { 
+  add_key(
+    {
       key = 'v', mods = 'SHIFT|CTRL', action = wezterm.action_callback(function(window, pane)
       window:perform_action(wezterm.action.SendKey{ key='v', mods='CTRL' }, pane) end),
     }
   )
-  table.insert(config.keys,
-    { 
+  add_key(
+    {
       key = 'V', mods = 'SHIFT|CTRL', action = wezterm.action_callback(function(window, pane)
       window:perform_action(wezterm.action.SendKey{ key='v', mods='CTRL' }, pane) end),
     }
   )
 end
 
-table.insert(config.keys, {
+add_key({
   key = 'F11',
   action = wezterm.action.ToggleFullScreen,
 })
@@ -75,6 +79,64 @@ if is_linux() then
 end
 config.native_macos_fullscreen_mode = true
 
+-- Enable the WezTerm multiplexer and large scrollback
+config.enable_tab_bar = true
+config.scrollback_lines = 100000
+
+config.tab_bar_at_bottom = true
+
+-- Wezterm multiplexer
+
+-- Define Ctrl-w as the leader key (like tmux prefix)
+config.leader = { key = "w", mods = "CTRL", timeout_milliseconds = 2000 }
+
+-- Create new tab in current workspace
+add_key {
+  key = "c",
+  mods = "LEADER",
+  action = wezterm.action.SpawnTab "CurrentPaneDomain",
+}
+
+-- Move between tabs
+add_key {
+  key = "p",
+  mods = "LEADER",
+  action = wezterm.action.ActivateTabRelative(-1),
+}
+add_key {
+  key = "n",
+  mods = "LEADER",
+  action = wezterm.action.ActivateTabRelative(1),
+}
+
+-- Close current tab (confirm)
+add_key {
+  key = "x",
+  mods = "LEADER",
+  action = wezterm.action.CloseCurrentTab { confirm = true },
+}
+
+-- Workspace (session) launcher and creator
+add_key {
+  key = "k",
+  mods = "LEADER",
+  action = wezterm.action.ShowLauncherArgs { flags = "FUZZY|WORKSPACES" },
+}
+add_key {
+  key = "C",
+  mods = "LEADER",
+  action = wezterm.action.PromptInputLine {
+    description = "Enter new workspace name",
+    action = wezterm.action_callback(function(window, pane, line)
+      if line then
+        window:perform_action(
+          wezterm.action.SwitchToWorkspace { name = line },
+          pane
+        )
+      end
+    end),
+  },
+}
 
 return config
 
