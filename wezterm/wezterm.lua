@@ -11,7 +11,6 @@ local is_linux = function()
 end
 
 config.color_scheme = 'Catppuccin Macchiato'
-config.hide_tab_bar_if_only_one_tab = true
 -- if is_darwin() then
 --   config.font = wezterm.font 'Hack Nerd Font Mono'
 -- else
@@ -33,6 +32,27 @@ config.window_padding = {
 local function add_key(key)
   table.insert(config.keys, key)
 end
+
+-- Helper to disable some bindings in a cross platform ways (linux/macos)
+local function disable_key_on_all_mods(key)
+  for _, mod in ipairs({ "CTRL", "SUPER" }) do
+    add_key({
+      key = key,
+      mods = mod,
+      action = wezterm.action.DisableDefaultAssignment,
+    })
+  end
+end
+
+-- I don't use tabs and just live with tmux
+config.enable_tab_bar = false
+config.window_decorations = 'RESIZE'
+
+-- Disable tab bindings
+disable_key_on_all_mods('t') -- new tab
+disable_key_on_all_mods('T') -- reopen tab
+disable_key_on_all_mods('w') -- close tab
+
 
 -- Mac OS has Super + C/P for Copy/Paste so we don't need this hacks
 if not is_darwin() then
@@ -80,10 +100,8 @@ end
 config.native_macos_fullscreen_mode = true
 
 -- Enable the WezTerm multiplexer and large scrollback
-config.enable_tab_bar = true
 config.scrollback_lines = 100000
 
-config.tab_bar_at_bottom = true
 
 -- Wezterm multiplexer
 
