@@ -2,6 +2,7 @@ abbr --add gs git status
 abbr --add gco git checkout
 abbr --add gu git pull
 abbr --add gp git push origin HEAD
+abbr --add gpf git push origin HEAD --force-with-lease
 abbr --add gr git rebase
 abbr --add ga git add
 abbr --add grm git rm
